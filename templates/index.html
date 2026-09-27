@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Crop Recommendation System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>Crop Recommendation System</h1>
+
+        <p class="subtitle">
+            Enter soil and environmental conditions
+            to get a suitable crop recommendation.
+        </p>
+
+
+        <form action="/predict" method="POST">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Nitrogen (N)</label>
+                    <input
+                        type="number"
+                        name="N"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Phosphorus (P)</label>
+                    <input
+                        type="number"
+                        name="P"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Potassium (K)</label>
+                    <input
+                        type="number"
+                        name="K"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <input
+                        type="number"
+                        name="temperature"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Humidity (%)</label>
+                    <input
+                        type="number"
+                        name="humidity"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Soil pH</label>
+                    <input
+                        type="number"
+                        name="ph"
+                        step="any"
+                        required
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Rainfall (mm)</label>
+                    <input
+                        type="number"
+                        name="rainfall"
+                        step="any"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <button type="submit">
+                🌾 Recommend Crop
+            </button>
+
+        </form>
+
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>Recommended Crop</h2>
+
+            <div class="crop-name">
+                {{ prediction | title }}
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
