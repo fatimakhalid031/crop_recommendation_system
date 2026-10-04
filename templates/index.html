@@ -2,138 +2,431 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>AgriQ — Intelligent Crop Recommendation</title>
 
-    <title>Crop Recommendation System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
-
 
 <body>
 
-    <div class="container">
+    <!-- NAVBAR -->
+    <nav class="navbar">
 
-        <h1>Crop Recommendation System</h1>
+        <a href="#home" class="logo">
+            <span class="logo-dot"></span>
+            AgriQ
+        </a>
 
-        <p class="subtitle">
-            Enter soil and environmental conditions
-            to get a suitable crop recommendation.
-        </p>
-
-
-        <form action="/predict" method="POST">
-
-            <div class="form-grid">
-
-                <div class="input-group">
-                    <label>Nitrogen (N)</label>
-                    <input
-                        type="number"
-                        name="N"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Phosphorus (P)</label>
-                    <input
-                        type="number"
-                        name="P"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Potassium (K)</label>
-                    <input
-                        type="number"
-                        name="K"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Temperature (°C)</label>
-                    <input
-                        type="number"
-                        name="temperature"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Humidity (%)</label>
-                    <input
-                        type="number"
-                        name="humidity"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Soil pH</label>
-                    <input
-                        type="number"
-                        name="ph"
-                        step="any"
-                        required
-                    >
-                </div>
-
-
-                <div class="input-group">
-                    <label>Rainfall (mm)</label>
-                    <input
-                        type="number"
-                        name="rainfall"
-                        step="any"
-                        required
-                    >
-                </div>
-
-            </div>
-
-
-            <button type="submit">
-                🌾 Recommend Crop
-            </button>
-
-        </form>
-
-
-        {% if prediction %}
-
-        <div class="result">
-
-            <h2>Recommended Crop</h2>
-
-            <div class="crop-name">
-                {{ prediction | title }}
-            </div>
-
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#recommend">Recommend</a>
+            <a href="#about">About</a>
         </div>
 
-        {% endif %}
+        <a href="#recommend" class="nav-button">
+            Try it <span></span>
+        </a>
 
-    </div>
+    </nav>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    AI • AGRICULTURE • INTELLIGENCE
+                </p>
+
+                <h1>
+                    Let the soil
+                    <span>tell you what to grow.</span>
+                </h1>
+
+                <p class="hero-description">
+                    An intelligent crop recommendation system that uses
+                    soil nutrients and environmental conditions to suggest
+                    the most suitable crop for your land.
+                </p>
+
+                <a href="#recommend" class="hero-button">
+                    Discover your crop
+                    <span></span>
+                </a>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="orb orb-one"></div>
+                <div class="orb orb-two"></div>
+
+                <div class="hero-circle">
+
+                    <div class="circle-inner">
+
+                        <span class="circle-small">
+                            INTELLIGENT
+                        </span>
+
+                        <strong>
+                            GROW<br>
+                            SMART
+                        </strong>
+
+                        <span class="circle-small">
+                            AGRICULTURE
+                        </span>
+
+                    </div>
+
+                </div>
+                <div class="floating-card">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>AgriQ</strong>
+                        <small>One stop farming solution</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSITION -->
+        <section class="transition-section">
+
+            <div class="transition-line"></div>
+
+            <p>
+                Your next harvest starts with
+            </p>
+
+            <h2>
+                understanding your land.
+            </h2>
+
+        </section>
+
+
+        <!-- RECOMMENDATION -->
+        <section class="recommend-section" id="recommend">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    CROP INTELLIGENCE
+                </p>
+
+                <h2>
+                    Find your
+                    <em>perfect crop.</em>
+                </h2>
+
+                <p>
+                    Enter the conditions of your field.
+                    Our model will analyse them and recommend
+                    the crop best suited to your inputs.
+                </p>
+
+            </div>
+
+
+            <div class="recommend-grid">
+
+                <!-- FORM CARD -->
+                <div class="form-card">
+
+                    <div class="form-top">
+                        <span>01</span>
+                        <p>FIELD CONDITIONS</p>
+                    </div>
+
+
+                    <form action="/predict" method="POST">
+
+                        <div class="input-grid">
+
+
+                            <div class="input-group">
+
+                                <label>Nitrogen</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="N"
+                                        required
+                                    >
+                                    <span>N</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Phosphorus</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="P"
+                                        required
+                                    >
+                                    <span></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Potassium</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="K"
+                                        required
+                                    >
+                                    <span>K</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Temperature</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="temperature"
+                                        required
+                                    >
+                                    <span>°C</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Humidity</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="humidity"
+                                        required
+                                    >
+                                    <span>%</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+
+                                <label>Soil pH</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="ph"
+                                        required
+                                    >
+                                    <span>pH</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-group full-width">
+
+                                <label>Rainfall</label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        step="any"
+                                        name="rainfall"
+                                        required
+                                    >
+                                    <span>mm</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="predict-button">
+
+                            <span>
+                                Analyse my field
+                            </span>
+
+                            <span class="arrow">
+                                
+                            </span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+                <!-- RESULT CARD -->
+                <div class="result-card">
+
+                    {% if prediction %}
+
+                    <div class="result-state">
+
+                        <div class="result-number">
+                            02
+                        </div>
+
+                        <div class="result-label">
+                            RECOMMENDED
+                        </div>
+
+                        <p class="eyebrow">
+                            YOUR FIELD MATCHES
+                        </p>
+
+                        <h3>
+                            {{ prediction }}
+                        </h3>
+
+                        <p class="result-description">
+                            Based on the soil nutrients and environmental
+                            conditions you provided, this crop is the
+                            strongest match according to our model.
+                        </p>
+
+                        <div class="result-bottom">
+
+                            <span>
+                                AI RECOMMENDATION
+                            </span>
+
+                            <span>
+                                ● HIGH MATCH
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="empty-result">
+
+                        <div class="result-number">
+                            02
+                        </div>
+
+                        <div class="empty-symbol">
+                            
+                        </div>
+
+                        <p class="eyebrow">
+                            WAITING FOR INPUT
+                        </p>
+
+                        <h3>
+                            Your crop<br>
+                            will appear here.
+                        </h3>
+
+                        <p>
+                            Enter your field conditions
+                            to reveal the recommendation.
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="about-section" id="about">
+
+            <div>
+
+                <p class="eyebrow">
+                    BUILT WITH MACHINE LEARNING
+                </p>
+
+                <h2>
+                    Data in.
+                    <span>Better decisions out.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                AgriQ uses a Random Forest classification model trained
+                on agricultural soil and climate data to identify suitable
+                crops from seven environmental parameters.
+            </p>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <a href="#home" class="logo">
+                <span class="logo-dot"></span>
+                AgriQ
+            </a>
+
+            <p>
+                Intelligent agriculture for a changing world.
+            </p>
+
+            <span>
+                © 2026
+            </span>
+
+        </footer>
+
+    </main>
 
 </body>
-
 </html>
